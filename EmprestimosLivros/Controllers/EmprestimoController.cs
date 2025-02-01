@@ -78,7 +78,7 @@ namespace EmprestimosLivros.Controllers
             dt.Columns.Add("Recebedor", typeof(string));
             dt.Columns.Add("Fornecedor", typeof(string));
             dt.Columns.Add("LivroEmprestado", typeof(string));
-            dt.Columns.Add("DataUltimaAtualização", typeof(DateTime));
+            dt.Columns.Add("DataEmprestimo", typeof(DateTime));
 
             var dados = _db.Emprestimos.ToList();
 
@@ -86,7 +86,7 @@ namespace EmprestimosLivros.Controllers
             {
                 foreach (var emprestimo in dados)
                 {
-                    dt.Rows.Add(emprestimo.Recebedor, emprestimo.Fornecedor, emprestimo.LivroEmprestado, emprestimo.DataUltimaAtualização);
+                    dt.Rows.Add(emprestimo.Recebedor, emprestimo.Fornecedor, emprestimo.LivroEmprestado, emprestimo.DataEmprestimo);
                 }
             }
 
@@ -118,7 +118,7 @@ namespace EmprestimosLivros.Controllers
             if (ModelState.IsValid)
             {
 
-                emprestimos.DataUltimaAtualização = DateTime.Now;
+                emprestimos.DataEmprestimo = DateTime.Now;
                 _db.Emprestimos.Add(emprestimos);
                 _db.SaveChanges();
 

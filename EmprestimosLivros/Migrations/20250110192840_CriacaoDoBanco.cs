@@ -20,14 +20,14 @@ namespace EmprestimosLivros.Migrations
                     Recebedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Fornecedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LivroEmprestado = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataUltimaAtualização = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DataEmprestimo = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Emprestimos", x => x.Id);
                 });
         }
-
+        
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
