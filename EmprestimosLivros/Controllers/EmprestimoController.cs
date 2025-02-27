@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using EmprestimosLivros.Data;
 using EmprestimosLivros.Models;
+using EmprestimosLivros.Services.SessaoService;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
@@ -10,17 +11,26 @@ namespace EmprestimosLivros.Controllers
     public class EmprestimoController : Controller
     {
         readonly private ApplicationDbContext _db;
+        readonly private ISessaoInterface _sessaoInterface;
 
 
-        public EmprestimoController(ApplicationDbContext db)
+        public EmprestimoController(ApplicationDbContext db, ISessaoInterface sessaoInterface)
         {
             _db = db;
+            _sessaoInterface = sessaoInterface;
         }
 
 
 
         public IActionResult Index()
         {
+            var usuario = _sessaoInterface.BuscarSessao();
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             IEnumerable<EmprestimosModel> emprestimos = _db.Emprestimos;
 
             return View(emprestimos);
@@ -29,12 +39,28 @@ namespace EmprestimosLivros.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
+            var usuario = _sessaoInterface.BuscarSessao();
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+
             return View();
         }
 
         [HttpGet]
         public IActionResult Editar(int? id)
         {
+            var usuario = _sessaoInterface.BuscarSessao();
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -98,6 +124,14 @@ namespace EmprestimosLivros.Controllers
         [HttpGet]
         public IActionResult Excluir(int? id)
         {
+            var usuario = _sessaoInterface.BuscarSessao();
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+
             if (id == null || id == 0)
             {
                 return NotFound();

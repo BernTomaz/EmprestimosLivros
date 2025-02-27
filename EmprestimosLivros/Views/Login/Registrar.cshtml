@@ -1,6 +1,10 @@
 ﻿@using EmprestimosLivros.Dto
 @model UsuarioRegisterDto
 
+@{
+    Layout = "_LayoutDeslogado";
+}
+
 @if (TempData["MensagemSucesso"] != null)
 {
     <div class="alert alert-success text-light" role="alert">
