@@ -15,9 +15,9 @@ namespace EmprestimosLivros.Models
         [Required(ErrorMessage = "O nome do livro é obrigatório.")]
         public string LivroEmprestado { get; set; }
 
-        public DateTime DataEmprestimo { get; set; }
+        public DateTime DataEmprestimo { get; set; } = DateTime.Now;
 
-        
+
     }
 }
 
