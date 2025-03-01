@@ -1,7 +1,8 @@
 # EmprestimosLivros
 
 ## 📌 Sobre o Projeto
-O **EmprestimosLivros** é um sistema web para gerenciamento de empréstimos de livros. Ele permite que usuários realizem login, façam requisições de empréstimos e gerenciem seu histórico. O projeto é baseado no **ASP.NET Core MVC** com **Entity Framework**.
+
+O EmprestimosLivros é um sistema web para gerenciamento de empréstimos de livros. Ele permite que usuários realizem login, façam requisições de empréstimos e gerenciem seu histórico. O projeto é baseado no ASP.NET Core MVC com Entity Framework.
 
 ## 🚀 Tecnologias Utilizadas
 - **C#** (ASP.NET Core MVC)
@@ -16,32 +17,42 @@ O **EmprestimosLivros** é um sistema web para gerenciamento de empréstimos de 
 EmprestimosLivros/
 │-- Controllers/         # Controladores MVC
 │   ├── EmprestimoController.cs
+│   ├── HomeController.cs
 │   ├── LoginController.cs
+│
+│-- Data/               # Configuração do Banco de Dados
+│   ├── ApplicationDbContext.cs
 │
 │-- Dto/                # Objetos de Transferência de Dados (DTOs)
 │   ├── UsuarioLoginDto.cs
+│   ├── UsuarioRegisterDto.cs
+│
+│-- Migrations/         # Migrations do Banco de Dados
+│   ├── 20250110192840_CriacaoDoBanco.cs
+│   ├── 20250201191630_Banco2.cs
+│   ├── 20250225033750_AdicionandoTabelaUsuarios.cs
+│   ├── ApplicationDbContextModelSnapshot.cs
+│
+│-- Models/             # Modelos de Dados
+│   ├── EmprestimosModel.cs
+│   ├── ErrorViewModel.cs
+│   ├── ResponseModel.cs
+│   ├── UsuarioModel.cs
 │
 │-- Services/           # Serviços de Negócio
 │   ├── LoginService/
-│   │   ├── ILoginInterface.cs
-│   │   ├── LoginService.cs
 │   ├── SenhaService/
-│   │   ├── ISenhaInterface.cs
-│   │   ├── SenhaService.cs
 │   ├── SessaoService/
-│   │   ├── ISessaoInterface.cs
-│   │   ├── SessaoService.cs
 │
 │-- Views/              # Views MVC (CSHTML)
+│   ├── Emprestimo/
 │   ├── Home/
-│   │   ├── Index.cshtml
 │   ├── Login/
-│   │   ├── Index.cshtml
-│   │   ├── Registrar.cshtml
 │   ├── Shared/
-│   │   ├── _Layout.cshtml
-│   │   ├── _LayoutDeslogado.cshtml
+│   ├── _ViewImports.cshtml
+│   ├── _ViewStart.cshtml
 │
+│-- appsettings.json    # Configuração do aplicativo
 │-- EmprestimosLivros.csproj  # Arquivo do projeto .NET
 │-- Program.cs               # Configuração inicial do projeto
 ```
@@ -55,8 +66,12 @@ cd EmprestimosLivros
 ```
 
 ### 2️⃣ Configurar o Banco de Dados
-1. Verifique sua conexão com um banco SQL Server (ou configure outro banco no `appsettings.json`).
-2. Aplicar as migrations:
+1.Instale as ferramentas necessárias:
+```sh
+dotnet tool install --global dotnet-ef
+```
+2. Verifique sua conexão com um banco SQL Server (ou configure outro banco no `appsettings.json`).
+3. Aplicar as migrations:
 ```sh
 dotnet ef database update
 ```
