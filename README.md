@@ -65,18 +65,25 @@ git clone https://github.com/BernTomaz/EmprestimosLivros.git
 cd EmprestimosLivros
 ```
 
-### 2️⃣ Configurar o Banco de Dados
-1.Instale as ferramentas necessárias:
+### 2️⃣ Configurar o Ambiente
+1. Instale as ferramentas necessárias:
 ```sh
 dotnet tool install --global dotnet-ef
 ```
+2. Restaure os pacotes do projeto:
+```sh
+dotnet restore
+```
+
+### 3️⃣ Configurar o Banco de Dados
+
 2. Verifique sua conexão com um banco SQL Server (ou configure outro banco no `appsettings.json`).
 3. Aplicar as migrations:
 ```sh
 dotnet ef database update
 ```
 
-### 3️⃣ Rodar o Projeto
+### 4️⃣ Rodar o Projeto
 ```sh
 dotnet run
 ```
