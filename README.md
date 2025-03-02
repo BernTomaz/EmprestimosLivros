@@ -2,7 +2,7 @@
 
 ## 📌 Sobre o Projeto
 
-O EmprestimosLivros é um sistema web para gerenciamento de empréstimos de livros. Ele permite que usuários realizem login, façam requisições de empréstimos e gerenciem seu histórico. O projeto é baseado no ASP.NET Core MVC com Entity Framework.
+O EmprestimosLivros é um sistema web para gerenciamento de empréstimos de livros. Ele permite que usuários realizem login, façam requisições de empréstimos e gerenciem seu histórico. O projeto é desenvolvido em ASP.NET Core MVC com Entity Framework Core, proporcionando uma aplicação robusta e escalável.
 
 ## 🚀 Tecnologias Utilizadas
 - **C#** (ASP.NET Core MVC)
@@ -40,9 +40,10 @@ EmprestimosLivros/
 │   ├── UsuarioModel.cs
 │
 │-- Services/           # Serviços de Negócio
-│   ├── LoginService/
-│   ├── SenhaService/
-│   ├── SessaoService/
+│   ├── EmprestimoService.cs
+│   ├── LoginService.cs
+│   ├── SenhaService.cs
+│   ├── SessaoService.cs
 │
 │-- Views/              # Views MVC (CSHTML)
 │   ├── Emprestimo/
@@ -55,6 +56,7 @@ EmprestimosLivros/
 │-- appsettings.json    # Configuração do aplicativo
 │-- EmprestimosLivros.csproj  # Arquivo do projeto .NET
 │-- Program.cs               # Configuração inicial do projeto
+
 ```
 
 ## 🔧 Como Executar o Projeto
@@ -90,10 +92,21 @@ dotnet run
 Acesse: `http://localhost:5000` (ou a porta configurada).
 
 ## ✨ Funcionalidades
-- Cadastro e autenticação de usuários
-- Registro de empréstimos de livros
-- Gerenciamento de sessões
-- Interface responsiva com Bootstrap
+
+✅ Cadastro e autenticação de usuários
+
+✅ Registro e gerenciamento de empréstimos de livros
+
+✅ Histórico de empréstimos
+
+✅ Gerenciamento de sessões
+
+✅ Interface responsiva com Bootstrap
+
+## 🛠 Próximas Melhorias
+- Implementação de notificações *por e-mail* sobre prazos de devolução
+- Melhoria na interface com um design mais moderno
+- Implementação de testes automatizados
 
 ## 📜 Licença
 Este projeto está sob a licença **MIT**. Sinta-se livre para utilizá-lo e contribuir!
