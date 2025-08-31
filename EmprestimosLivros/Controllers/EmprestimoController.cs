@@ -83,12 +83,16 @@ namespace EmprestimosLivros.Controllers
 
             using (XLWorkbook wb = new XLWorkbook())
             {
-                wb.Worksheets.Add(dt, "Dados Empréstimo");
+                var ws = wb.Worksheets.Add(dt, "Dados Empréstimo");
+                
+                ws.Column(3).Style.DateFormat.Format = "dd/MM/yyyy";
 
                 using (MemoryStream stream = new MemoryStream())
                 {
                     wb.SaveAs(stream);
-                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Emprestimos.xlsx");
+                    return File(stream.ToArray(),
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Emprestimos.xlsx");
                 }
             }
         }
