@@ -6,29 +6,29 @@
 }
 
 <style>
-    /* Ajuste as alturas se o seu header/footer forem diferentes */
+    
     :root {
-        --header-h: 56px; /* altura típica da navbar bootstrap */
-        --footer-h: 44px; /* altura típica do footer fino */
+        --header-h: 56px; 
+        --footer-h: 44px; 
     }
 
     html, body {
         height: 100%;
         margin: 0;
-        overflow: hidden; /* sem barras de rolagem */
+        overflow: hidden; 
     }
 
-    /* Área útil: toda a viewport MENOS header e footer */
+    
     .login-area {
         height: calc(100vh - var(--header-h) - var(--footer-h));
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 16px; /* respiro nas laterais em telas pequenas */
+        padding: 16px; 
         box-sizing: border-box;
     }
 
-    /* Card responsivo */
+    
     .login-card {
         width: min(480px, 100%);
         border: 0;
@@ -38,7 +38,7 @@
         background: #fff;
     }
 
-    /* Imagem e título responsivos */
+    
     .login-logo {
         display: block;
         margin: 0 auto 12px auto;
@@ -55,7 +55,7 @@
         font-weight: 600;
     }
 
-    /* Inputs com espaçamento enxuto */
+    
     .form-label {
         margin-bottom: .35rem;
     }
@@ -64,12 +64,12 @@
         padding: .6rem .75rem;
     }
 
-    /* Reserva espaço fixo para mensagens (não deixa o card “pular”) */
+    
     .message-box {
         min-height: 44px;
     }
 
-    /* Botões lado a lado, mas empilham em telas muito pequenas */
+    
     .btn-row {
         gap: 8px;
     }
@@ -87,7 +87,7 @@
     }
 </style>
 
-<!-- ALERTAS GLOBAIS (opcional: se quiser dentro do card, remova estes dois ifs e deixe só a message-box) -->
+
 @if (false)
 {
     if (TempData["MensagemSucesso"] != null)
@@ -107,7 +107,7 @@
 
 <div class="login-area">
     <div >
-        <!-- Mensagens DENTRO do card (com altura reservada) -->
+        
         <div class="message-box">
             @if (TempData["MensagemErro"] != null)
             {
@@ -123,13 +123,13 @@
             }
         </div>
 
-        <!-- Logo -->
+        
         <img src="~/img/book5.jpg" alt="Livro" class="login-logo" />
 
-        <!-- Título -->
+        
         <h3 class="login-title">Gerenciamento de Livros</h3>
 
-        <!-- Formulário -->
+        
         <form asp-action="Login" asp-controller="Login" method="post" novalidate>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>

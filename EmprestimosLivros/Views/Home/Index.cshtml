@@ -1,8 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    
-
 }
+
+<style>
+    
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    footer {
+        flex-shrink: 0;
+    }
+
+    
+    .home-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+        
+        .home-wrap img {
+            max-width: 350px; 
+            width: 100%; 
+            height: auto; 
+            border-radius: .5rem;
+        }
+
+        
+        .home-wrap div {
+            display: flex;
+            justify-content: center;
+        }
+</style>
 
 @if (TempData["MensagemSucesso"] != null)
 {
@@ -18,10 +59,12 @@
     </div>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Empréstimos Tech</h1>
-    <p>Seja bem-vindo ao sistema de empréstimos de livros online.</p>
-    <div>
-        <img src="/img/book1.jpg"/>
+<main>
+    <div class="home-wrap text-center">
+        <h1 class="display-4">Empréstimos Tech</h1>
+        <p>Seja bem-vindo ao sistema de empréstimos de livros online.</p>
+        <div>
+            <img src="/img/book1.jpg" alt="Livros - Empréstimos Tech" />
+        </div>
     </div>
-</div>
+</main>

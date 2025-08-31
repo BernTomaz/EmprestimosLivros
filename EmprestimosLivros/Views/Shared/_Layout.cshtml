@@ -12,7 +12,7 @@
     <link href="https://cdn.datatables.net/v/dt/dt-2.2.1/datatables.min.css" rel="stylesheet">
 
     <style>
-        /* --- ZERA SCROLL DA PÁGINA E EVITA OVERFLOW HORIZONTAL --- */
+        
         html, body {
             height: 100%;
         }
@@ -21,31 +21,31 @@
             margin: 0;
             overflow: hidden;
         }
-        /* trava o scroll global */
+        
         body, .container, main {
             overflow-x: hidden;
         }
-            /* elimina barra horizontal */
+            
 
-            /* Layout full-viewport sem scroll de página */
+            
             body.app-shell {
                 height: 100dvh;
                 min-height: 100dvh;
             }
-        /* usa dvh p/ mobile */
+        
         .page-wrap {
             height: 100%;
         }
 
-        /* O main é quem rola quando necessário */
+        
         main.app-main {
             overflow: auto;
-            -webkit-overflow-scrolling: touch; /* suaviza no iOS */
-            min-height: 0; /* evita estourar o flex container */
-            padding-bottom: 1.25rem; /* respiro p/ não encostar no footer */
+            -webkit-overflow-scrolling: touch; 
+            min-height: 0; 
+            padding-bottom: 1.25rem; 
         }
 
-        /* Navbar colapsada muito longa não força scroll do body */
+        
         media (max-width: 576px) {
             .navbar-collapse
 
@@ -58,9 +58,9 @@
             padding-bottom: env(safe-area-inset-bottom);
         }
 
-        }
+        
 
-        /* Garante que nenhum CSS do tema fixe o footer */
+        
         footer.footer {
             position: static !important;
             bottom: auto;
@@ -103,10 +103,10 @@
         </nav>
     </header>
 
-    <!-- wrapper flex ocupando a viewport inteira -->
+   
     <div class="page-wrap d-flex flex-column flex-fill">
         <div class="container flex-fill d-flex flex-column">
-            <!-- O scroll fica aqui dentro -->
+            
             <main role="main" class="app-main pb-4">
                 @RenderBody()
             </main>

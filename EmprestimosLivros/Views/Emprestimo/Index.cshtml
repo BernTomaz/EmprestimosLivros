@@ -1,64 +1,159 @@
 ﻿@model IEnumerable<EmprestimosModel>
 
-<div class="container"> 
-    <div class="d-flex justify-content-between align-items-center mb-5">
-        <h1>Empréstimos</h1>
+@{
+    ViewData["Title"] = "Empréstimos";
+}
 
-        <div>
-            <a class=" btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Exportar"> <i class="bi bi-file-earmark-plus mx-2"></i>Exportar</a>
-            <a class=" btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"> <i class="bi bi-file-earmark-plus mx-2"></i> Cadastrar novo empréstimo</a>
+<style>
+    
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+    
+    footer {
+        flex-shrink: 0;
+    }
+   
+
+    
+    .table-wrap { 
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table-wrap {
+        padding-bottom: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    
+    #Emprestimos td, #Emprestimos th {
+        vertical-align: middle;
+    }
+
+    .truncate {
+        display: inline-block;
+        max-width: 240px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: bottom;
+    }
+
+    
+    .actions .btn {
+        padding: .35rem .6rem;
+    }
+
+    
+    @@media (max-width: 575.98px) {
+        .truncate {
+            max-width: 180px;
+        }
+
+        .actions {
+            display: inline-flex;
+            gap: .4rem;
+            flex-wrap: wrap;
+        }
+
+            .actions .btn {
+                flex: 1 0 auto;
+            }
+    }
+</style>
+
+<main>
+    <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h1 class="m-0">Empréstimos</h1>
+
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-success btn-sm" asp-controller="Emprestimo" asp-action="Exportar">
+                    <i class="bi bi-filetype-csv me-1"></i> Exportar
+                </a>
+                <a class="btn btn-success btn-sm" asp-controller="Emprestimo" asp-action="Cadastrar">
+                    <i class="bi bi-file-earmark-plus me-1"></i> Cadastrar novo
+                </a>
+            </div>
         </div>
 
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success text-light" role="alert">
+                @TempData["MensagemSucesso"]
+            </div>
+        }
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger text-light" role="alert">
+                @TempData["MensagemErro"]
+            </div>
+        }
 
-       
+        
+        <div class="table-wrap table-responsive">
+            <table id="Emprestimos" class="table table-light table-hover align-middle w-100">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Recebedor</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Livro</th>
+                        <th scope="col">Data Empréstimo</th>
+                        <th scope="col" class="text-end">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><span class="truncate" title="@item.Recebedor">@item.Recebedor</span></td>
+                                <td><span class="truncate" title="@item.Fornecedor">@item.Fornecedor</span></td>
+                                <td><span class="truncate" title="@item.LivroEmprestado">@item.LivroEmprestado</span></td>
+                                <td>
+                                    @(item.DataEmprestimo == DateTime.MinValue
+                                        ? "-"
+                                        : item.DataEmprestimo.ToString("dd/MM/yyyy"))
+                                </td>
+                                <td class="text-end">
+                                    <div class="actions d-inline-flex gap-2">
+                                        <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@item.Id"
+                                           class="btn btn-warning btn-sm">
+                                            <i class="bi bi-pencil-square me-1"></i> Editar
+                                        </a>
+                                        <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@item.Id"
+                                           class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash3 me-1"></i> Excluir
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-4">
+                                Nenhum empréstimo encontrado.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-
-
-    @if(TempData["MensagemSucesso"] != null)
-    {
-        <div class="alert alert-success text-light" role="alert">
-            @TempData["MensagemSucesso"]
-        </div>
-    }
-
-    @if (TempData["MensagemErro"] != null)
-    {
-        <div class="alert alert-danger text-light" role="alert">
-            @TempData["MensagemErro"]
-        </div>
-    }
-
-
-<table id="Emprestimos" class="table table-light table-hover mt-5">
-    <thead>
-        <tr>
-            <th scope="col">Recebedor</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Livro</th>
-            <th scope="col">Data Emprestimo</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>      
-
-        @if(Model != null)         
-        { 
-            foreach (var item in Model)
-            { 
-                <tr>
-                    <th scope="row">@item.Recebedor</th>
-                    <td> @item.Fornecedor</td>
-                    <td>@item.LivroEmprestado</td>
-                        <td>@item.DataEmprestimo</td>
-                    <td>
-                            <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning mx-2"> <i class="bi bi-pencil-square mx-2"></i> Editar</a>
-                            <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@item.Id" class=" btn btn-danger mx-2">  <i class="bi bi-trash3 mx-2"></i> Excluir</a>
-                    </td>
-                </tr>
-
-             }
-        } 
-
-    </tbody>
-</table>
-</div>
+</main>

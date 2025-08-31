@@ -4,6 +4,56 @@
     ViewData["Title"] = "Excluir Empréstimo";
 }
 
+<style>
+    
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    footer {
+        flex-shrink: 0;
+    }
+
+    
+    .form-card {
+        max-width: 720px;
+        padding: 1.5rem !important;
+    }
+
+    
+    @@media (min-width: 992px) {
+        .form-card {
+            max-width: 600px;
+        }
+
+        .form-scroll {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+    }
+
+    @@media (max-width: 991.98px) {
+        .form-scroll {
+            max-height: none;
+            overflow: visible;
+        }
+    }
+
+    .page-title {
+        font-size: clamp(1.2rem, 2.3vw, 1.8rem);
+    }
+</style>
 
 @if (TempData["MensagemSucesso"] != null)
 {
@@ -19,42 +69,51 @@
     </div>
 }
 
+<main>
+    <div class="container py-3">
+        <div class="form-card bg-dark rounded-4 mx-auto">
+            <div class="mb-3 text-center">
+                <h1 class="text-light m-0 page-title">Excluir Empréstimo</h1>
+            </div>
 
-<div class="container bg-dark p-5 rounded-5">
+            <div class="form-scroll">
+                <form method="post" asp-controller="Emprestimo" asp-action="Excluir">
+                    <input type="hidden" asp-for="Id" />
 
-    <div class="mb-5 text-center ">
-        <h1 class="text-light">Excluir Empréstimo</h1>
+                    <h2 class="text-light fs-6 mb-3">
+                        Tem certeza que deseja excluir o registro?
+                    </h2>
+
+                    <div class="mb-2">
+                        <label for="Recebedor" class="form-label text-light">Recebedor</label>
+                        <input type="text"
+                               class="form-control text-light bg-dark border-secondary"
+                               asp-for="Recebedor" id="Recebedor"
+                               disabled />
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="Fornecedor" class="form-label text-light">Fornecedor</label>
+                        <input type="text"
+                               class="form-control text-light bg-dark border-secondary"
+                               asp-for="Fornecedor" id="Fornecedor"
+                               disabled />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Livro" class="form-label text-light">Livro</label>
+                        <input type="text"
+                               class="form-control text-light bg-dark border-secondary"
+                               asp-for="LivroEmprestado" id="Livro"
+                               disabled />
+                    </div>
+
+                    <div class="d-flex gap-3 mt-3">
+                        <button type="submit" class="btn btn-danger w-50">Excluir</button>
+                        <a class="btn btn-primary w-50" asp-action="Index">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <form method="post" asp-controller="Emprestimo" asp-action="Excluir">
-        <input type="hidden" asp-for="Id">
-
-        <h2 class="text-light">Tem certeza que deseja excluir o registro?</h2>
-
-        <div class="mb-3">
-            <label for="Recebedor" class="form-label text-light ">Recebedor</label>
-            <input type="text" class="form-control text-light" asp-for="Recebedor" id=Recebedor placeholder="Quem está recebendo o livro?" disabled>
-            <span class="text-danger" asp-validation-for="Recebedor"></span>
-        </div>
-
-        <div class="mb-3">
-            <label for="Fornecedor" class="form-label text-light">Fornecedor</label>
-            <input type="text" class="form-control text-light " asp-for="Fornecedor" id=Fornecedor placeholder="Quem está emprestando o livro?" disabled>
-            <span class="text-danger" asp-validation-for="Fornecedor"></span>
-        </div>
-
-        <div class="mb-3">
-            <label for="Livro" class="form-label text-light">Livro</label>
-            <input type="text" class="form-control text-light" asp-for="LivroEmprestado" id="Livro" placeholder="Qual é o livro emprestado?" disabled>
-            <span class="text-danger" asp-validation-for="LivroEmprestado"></span>
-
-        </div>
-
-        <div class="d-flex gap-5 mt-5">
-            <button type="submit" class="btn btn-danger w-50">Excluir</button>
-            <a class="btn btn-primary w-50" asp-controller="Emprestimo" asp-action="Index">Voltar</a>
-        </div>
-
-
-    </form>
-</div>
+</main>
