@@ -124,19 +124,13 @@
                                 <td><span class="truncate" title="@item.Recebedor">@item.Recebedor</span></td>
                                 <td><span class="truncate" title="@item.Fornecedor">@item.Fornecedor</span></td>
                                 <td><span class="truncate" title="@item.LivroEmprestado">@item.LivroEmprestado</span></td>
-                                <td>
-                                    @(item.DataEmprestimo == DateTime.MinValue
-                                        ? "-"
-                                        : item.DataEmprestimo.ToString("dd/MM/yyyy"))
-                                </td>
+                                <td>@(item.DataEmprestimo == DateTime.MinValue ? "-" : item.DataEmprestimo.ToString("dd/MM/yyyy"))</td>
                                 <td class="text-end">
                                     <div class="actions d-inline-flex gap-2">
-                                        <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@item.Id"
-                                           class="btn btn-warning btn-sm">
+                                        <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil-square me-1"></i> Editar
                                         </a>
-                                        <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@item.Id"
-                                           class="btn btn-danger btn-sm">
+                                        <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
                                             <i class="bi bi-trash3 me-1"></i> Excluir
                                         </a>
                                     </div>
@@ -144,14 +138,7 @@
                             </tr>
                         }
                     }
-                    else
-                    {
-                        <tr>
-                            <td colspan="5" class="text-center text-muted py-4">
-                                Nenhum empréstimo encontrado.
-                            </td>
-                        </tr>
-                    }
+                    @* else: não renderiza nada *@
                 </tbody>
             </table>
         </div>
