@@ -19,48 +19,56 @@
     </div>
 }
 
-
 <div asp-validation-summary="All" class="text-danger"></div>
 
+<div class="container compact-form">
 
-<div class="container">
-
-    <h1>Cadastro de Usuarios</h1>
+    <h2 class="mb-4 text-center">Cadastro de Usuários</h2>
 
     <form asp-action="Registrar" asp-controller="Login" method="post">
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email"  asp-for="Email" >
+        <div class="form-group mb-3">
+            <input type="email" class="form-control" asp-for="Email" placeholder="Email">
         </div>
 
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="nome" asp-for="Nome">
+        <div class="form-group mb-3">
+            <input type="text" class="form-control" asp-for="Nome" placeholder="Nome">
         </div>
 
-        <div class="mb-3">
-            <label for="sobrenome" class="form-label">Sobrenome:</label>
-            <input type="text" class="form-control" id="sobrenome" asp-for="Sobrenome">
+        <div class="form-group mb-3">
+            <input type="text" class="form-control" asp-for="Sobrenome" placeholder="Sobrenome">
         </div>
 
-        <div class="mb-3">
-            <label for="senha" class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="senha" asp-for="Senha">
+        <div class="form-group mb-3">
+            <input type="password" class="form-control" asp-for="Senha" placeholder="Senha">
         </div>
 
-        <div class="mb-3">
-            <label for="senha" class="form-label">Confirmar Senha:</label>
-            <input type="password" class="form-control" id="senha" asp-for="ConfirmaSenha">
+        <div class="form-group mb-4">
+            <input type="password" class="form-control" asp-for="ConfirmaSenha" placeholder="Confirmar Senha">
         </div>
 
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary w-25 mx-2">Cadastrar</button>
-            <a asp-action="Index" asp-controller="Login" class="btn w-25">Voltar</a>
+        <div class="d-flex justify-content-center gap-2">
+            <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+            <a asp-action="Index" asp-controller="Login" class="btn btn-outline-secondary px-4">Voltar</a>
         </div>
 
     </form>
-
 </div>
 
+<style>
+    .compact-form {
+        max-width: 400px; /* largura menor para ficar mais compacto */
+        margin: auto; /* centraliza na tela */
+    }
 
+        .compact-form .form-control {
+            padding: 0.6rem 0.75rem; /* altura moderada, sem ficar gigante */
+            font-size: 0.95rem;
+            border-radius: 6px;
+        }
+
+        .compact-form h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+</style>
