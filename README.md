@@ -104,7 +104,7 @@ Agora, basta rodar o projeto no Visual Studio:
 2. O navegador abrirá automaticamente em http://localhost:5000 (ou outra porta configurada).
 
 
-## ✨ Funcionalidades
+## Funcionalidades
 Cadastro e autenticação de usuários
 
 Registro e gerenciamento de empréstimos de livros
