@@ -1,17 +1,17 @@
 # EmprestimosLivros
 
-## 📌 Sobre o Projeto
+## Sobre o Projeto
 
 O EmprestimosLivros é um sistema web para gerenciamento de empréstimos de livros. Ele permite que usuários realizem login, façam requisições de empréstimos e gerenciem seu histórico. O projeto é desenvolvido em ASP.NET Core MVC com Entity Framework Core, proporcionando uma aplicação robusta e escalável.
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - **C#** (ASP.NET Core MVC)
 - **Entity Framework Core**
 - **SQL Server** (ou outro banco de dados suportado pelo EF Core)
 - **Bootstrap** (para estilização)
 - **jQuery & DataTables** (para interações dinâmicas)
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 EmprestimosLivros/
@@ -59,16 +59,16 @@ EmprestimosLivros/
 
 ```
 
-## 🔧 Como Executar o Projeto
+## Como Executar o Projeto
 
-### 1️⃣ Clonar o Repositório
+### Clonar o Repositório
 
 ```sh
 git clone https://github.com/BernTomaz/EmprestimosLivros.git
 cd EmprestimosLivros
 
 ```
-### 2️⃣ Abrir o Projeto no Visual Studio
+### Abrir o Projeto no Visual Studio
 
 1. Abra o Visual Studio (versão 2022 ou superior recomendada).
 2. Clique em "Abrir um projeto ou solução".
@@ -76,7 +76,7 @@ cd EmprestimosLivros
 4. Aguarde o carregamento do projeto.
 
 
-### 3️⃣ Restaurar Pacotes
+### Restaurar Pacotes
 
 No Gerenciador de Pacotes NuGet, execute:
 
@@ -89,7 +89,7 @@ Ou, no Visual Studio, vá até Ferramentas > Gerenciador de Pacotes NuGet > Cons
 Restore-Package
 ```
 
-### 4️⃣ Configurar o Banco de Dados
+### Configurar o Banco de Dados
 
 No Visual Studio, abra o arquivo appsettings.json e configure a string de conexão com o SQL Server (ou outro banco de sua preferência).
 No Console do Gerenciador de Pacotes NuGet, execute:
@@ -97,7 +97,7 @@ No Console do Gerenciador de Pacotes NuGet, execute:
 ```sh
 Update-Database
 ```
-### 5️⃣ Executar o Projeto
+### Executar o Projeto
 Agora, basta rodar o projeto no Visual Studio:
 
 1. Clique em Executar (F5) ou selecione EmprestimosLivros como Projeto de Inicialização e clique no botão de Iniciar.
@@ -105,24 +105,24 @@ Agora, basta rodar o projeto no Visual Studio:
 
 
 ## ✨ Funcionalidades
-✅ Cadastro e autenticação de usuários
+Cadastro e autenticação de usuários
 
-✅ Registro e gerenciamento de empréstimos de livros
+Registro e gerenciamento de empréstimos de livros
 
-✅ Histórico de empréstimos
+Histórico de empréstimos
 
-✅ Gerenciamento de sessões
+Gerenciamento de sessões
 
-✅ Interface responsiva com Bootstrap
+Interface responsiva com Bootstrap
 
-## 🛠 Próximas Melhorias
+## Próximas Melhorias
 - Implementação de notificações *por e-mail* sobre prazos de devolução
 - Melhoria na interface com um design mais moderno
 - Implementação de testes automatizados
 
-## 📜 Licença
+## Licença
 Este projeto está sob a licença **MIT**. Sinta-se livre para utilizá-lo e contribuir!
 
 ---
-🔗 **Repositório:** [EmprestimosLivros](https://github.com/BernTomaz/EmprestimosLivros)
+ **Repositório:** [EmprestimosLivros](https://github.com/BernTomaz/EmprestimosLivros)
 
